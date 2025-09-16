@@ -69,7 +69,10 @@ export const EventAlert = () => {
           
           <div className="text-center space-y-3">
             <h2 className="text-2xl font-bold text-foreground">🚨 EVENT ALERT</h2>
-            <h3 className="text-xl font-semibold text-primary">{alertEvent.name}</h3>
+            <div className="space-y-1">
+              <p className="text-sm text-muted-foreground">Alert for {alertEvent.userName}</p>
+              <h3 className="text-xl font-semibold text-primary">{alertEvent.name}</h3>
+            </div>
             
             <div className="space-y-2">
               <p className="text-sm text-muted-foreground">

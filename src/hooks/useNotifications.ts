@@ -16,11 +16,12 @@ export const useNotifications = (events: Event[]) => {
     if (timeDiff > 0) {
       setTimeout(() => {
         if ('Notification' in window && Notification.permission === 'granted') {
-          new Notification(`🚨 Event Reminder`, {
+          new Notification(`🚨 Event Reminder for ${event.userName}`, {
             body: `${event.name} - ${event.importance.toUpperCase()} priority`,
             icon: '/favicon.ico',
             tag: event.id,
-            requireInteraction: true
+            requireInteraction: true,
+            silent: false
           });
         }
         

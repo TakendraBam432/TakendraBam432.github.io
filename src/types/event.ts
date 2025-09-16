@@ -5,6 +5,7 @@ export interface Event {
   name: string;
   datetime: string;
   importance: EventImportance;
+  userName: string;
   createdAt: string;
 }
 
