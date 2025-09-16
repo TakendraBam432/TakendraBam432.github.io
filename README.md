@@ -1,73 +1,61 @@
-# Welcome to your Lovable project
+## Event Reminder App ⏰
 
-## Project info
+A simple Event Reminder App that allows users to create, store, and manage their events locally. The app sends timely notifications and can display popup alerts for important events. It's designed with a clean, futuristic UI and aims to help users never miss important dates.
 
-**URL**: https://lovable.dev/projects/7800f31a-83fe-4e9c-8c68-ea45509b2577
+### Features
 
-## How can I edit this code?
+- Local Event Storage: Save events with name, date, time, and importance level (Neutral, Serious, Extremely Serious).
+- Notifications: Get notified when events are about to occur, including details and importance.
+- Popup Alerts: Optional popup screens with system notification sounds and a Stop button.
+- Futuristic UI: Modern, clean, and minimalistic design for easy use.
 
-There are several ways of editing your application.
 
-**Use Lovable**
+## Tech Stack
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/7800f31a-83fe-4e9c-8c68-ea45509b2577) and start prompting.
+Frontend: React / React Native
 
-Changes made via Lovable will be committed automatically to this repo.
+Storage: Local Storage or SQLite
 
-**Use your preferred IDE**
+Notifications: Device-native notifications API
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Getting Started
 
-Follow these steps:
+# Clone the repository
+git clone https://github.com/TakendraBam432/Event_Reminder_APP.git
+cd Event-reminder_APP
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+Install dependencies
+npm install
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Run the app
+npm start
 
-# Step 3: Install the necessary dependencies.
-npm i
+# Build for mobile (if using React Native)
+npx react-native run-android
+npx react-native run-ios
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+## Usage
 
-**Edit a file directly in GitHub**
+addEvent({ name: 'Doctor Appointment', date: '2025-09-20', importance: 'Serious' });
+notifyUser(events[0]);
+showPopup(events[0]);
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 👨‍💻 OWNER INFO
 
-**Use GitHub Codespaces**
+I'M TAKENDRA BAM AAA college student from NEPAL
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Contributions are welcome!
+Check out the repository or connect through social platforms:
 
-## What technologies are used for this project?
+GitHub: TakendraBam432
 
-This project is built with:
+Facebook: Takendra Bam
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+i'm the fresher so do not expect tooo muchhhhh
 
-## How can I deploy this project?
 
-Simply open [Lovable](https://lovable.dev/projects/7800f31a-83fe-4e9c-8c68-ea45509b2577) and click on Share -> Publish.
+License
 
-## Can I connect a custom domain to my Lovable project?
+MIT License © 2025 Takendra Bam
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
