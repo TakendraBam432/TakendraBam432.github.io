@@ -57,6 +57,20 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Futuristic color palette
+        neon: {
+          blue: "hsl(var(--neon-blue))",
+          purple: "hsl(var(--neon-purple))",
+          green: "hsl(var(--neon-green))",
+        },
+        cyber: {
+          orange: "hsl(var(--cyber-orange))",
+        },
+        status: {
+          neutral: "hsl(var(--status-neutral))",
+          serious: "hsl(var(--status-serious))",
+          critical: "hsl(var(--status-critical))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
