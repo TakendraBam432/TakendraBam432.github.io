@@ -29,61 +29,40 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background cyber-grid">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        {/* Header */}
-        <div className="text-center mb-12 space-y-6">
-          <div className="flex items-center justify-center gap-3">
-            <div className="relative">
-              <Zap className="w-12 h-12 text-neon-blue" />
-              <div className="absolute inset-0 w-12 h-12 text-neon-blue animate-ping opacity-20">
-                <Zap className="w-12 h-12" />
+    <div className="min-h-screen bg-background">
+      <div className="max-w-sm mx-auto">
+        {/* Mobile Header */}
+        <div className="sticky top-0 bg-background/80 backdrop-blur-lg border-b border-border/50 p-4 z-10">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <Zap className="w-6 h-6 text-neon-blue" />
+              <h1 className="text-lg font-bold text-foreground">Reminders</h1>
+            </div>
+            {userName && (
+              <div className="flex items-center gap-1 text-sm text-muted-foreground">
+                <User className="w-4 h-4" />
+                <span>{userName}</span>
               </div>
-            </div>
-            <h1 className="text-4xl font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">
-              Event Reminder
-            </h1>
+            )}
           </div>
-          <p className="text-lg text-muted-foreground">
-            Never miss an important event with futuristic notifications
-          </p>
-          
-          {userName && (
-            <div className="flex items-center justify-center gap-2 text-muted-foreground">
-              <User className="w-4 h-4" />
-              <span>Welcome back, {userName}</span>
-            </div>
-          )}
         </div>
 
-        {/* Quick Actions */}
-        <div className="mb-8">
-          <Card className="glass-card p-6">
-            <div className="flex flex-col sm:flex-row gap-4 items-center justify-between">
-              <div>
-                <h2 className="text-xl font-semibold text-foreground mb-2">Ready to schedule?</h2>
-                <p className="text-muted-foreground">Create your next important reminder</p>
-              </div>
-              <Button
-                onClick={() => navigate('/create')}
-                size="lg"
-                className="bg-primary hover:bg-primary/90 text-primary-foreground glow-border"
-              >
-                <Plus className="w-5 h-5 mr-2" />
-                Create Event
-              </Button>
-            </div>
-          </Card>
-        </div>
+        {/* Content */}
+        <div className="p-4 space-y-4">
+          {/* Create Button */}
+          <Button
+            onClick={() => navigate('/create')}
+            size="lg"
+            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-base font-semibold"
+          >
+            <Plus className="w-5 h-5 mr-2" />
+            New Reminder
+          </Button>
 
-        {/* Event List */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-6 h-6 text-neon-blue" />
-            <h2 className="text-2xl font-semibold text-foreground">Your Events</h2>
+          {/* Event List */}
+          <div className="space-y-4">
+            <EventList events={events} onDeleteEvent={handleDeleteEvent} />
           </div>
-          
-          <EventList events={events} onDeleteEvent={handleDeleteEvent} />
         </div>
 
         {/* Alert Component */}

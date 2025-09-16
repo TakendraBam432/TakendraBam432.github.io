@@ -58,39 +58,28 @@ const CreateEvent = () => {
   const minDateTime = new Date().toISOString().slice(0, 16);
 
   return (
-    <div className="min-h-screen bg-background cyber-grid">
-      <div className="container mx-auto px-4 py-8 max-w-2xl">
-        {/* Header */}
-        <div className="mb-8">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/')}
-            className="mb-6 text-muted-foreground hover:text-foreground"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back to Events
-          </Button>
-          
-          <div className="text-center space-y-4">
-            <div className="flex items-center justify-center gap-3">
-              <div className="relative">
-                <Zap className="w-10 h-10 text-neon-blue" />
-                <div className="absolute inset-0 w-10 h-10 text-neon-blue animate-ping opacity-20">
-                  <Zap className="w-10 h-10" />
-                </div>
-              </div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-neon-blue to-neon-purple bg-clip-text text-transparent">
-                Create New Event
-              </h1>
+    <div className="min-h-screen bg-background">
+      <div className="max-w-sm mx-auto">
+        {/* Mobile Header */}
+        <div className="sticky top-0 bg-background/80 backdrop-blur-lg border-b border-border/50 p-4 z-10">
+          <div className="flex items-center gap-3">
+            <Button
+              variant="ghost"
+              size="sm"
+              onClick={() => navigate('/')}
+              className="p-2"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </Button>
+            <div className="flex items-center gap-2">
+              <Zap className="w-5 h-5 text-neon-blue" />
+              <h1 className="text-lg font-bold text-foreground">New Reminder</h1>
             </div>
-            <p className="text-muted-foreground">
-              Schedule your next important reminder
-            </p>
           </div>
         </div>
 
         {/* Form */}
-        <Card className="glass-card p-8">
+        <div className="p-4">
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-2">
               <Label htmlFor="user-name" className="text-foreground flex items-center gap-2">
@@ -103,75 +92,77 @@ const CreateEvent = () => {
                 placeholder="Enter your name..."
                 value={formData.userName}
                 onChange={(e) => setFormData({ ...formData, userName: e.target.value })}
-                className="bg-input/50 border-border/50 focus:border-primary"
+                className="h-12 text-base"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="event-name" className="text-foreground">Event Name</Label>
+              <Label htmlFor="event-name" className="text-foreground">Event</Label>
               <Input
                 id="event-name"
                 type="text"
-                placeholder="Enter event name..."
+                placeholder="What's the reminder for?"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="bg-input/50 border-border/50 focus:border-primary"
+                className="h-12 text-base"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="event-datetime" className="text-foreground">Date & Time</Label>
+              <Label htmlFor="event-datetime" className="text-foreground">When</Label>
               <Input
                 id="event-datetime"
                 type="datetime-local"
                 min={minDateTime}
                 value={formData.datetime}
                 onChange={(e) => setFormData({ ...formData, datetime: e.target.value })}
-                className="bg-input/50 border-border/50 focus:border-primary"
+                className="h-12 text-base"
                 required
               />
             </div>
             
             <div className="space-y-2">
-              <Label htmlFor="importance" className="text-foreground">Importance Level</Label>
+              <Label htmlFor="importance" className="text-foreground">Priority</Label>
               <Select
                 value={formData.importance}
                 onValueChange={(value: EventImportance) => 
                   setFormData({ ...formData, importance: value })
                 }
               >
-                <SelectTrigger className="bg-input/50 border-border/50 focus:border-primary">
+                <SelectTrigger className="h-12 text-base">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-popover border-border">
-                  <SelectItem value="neutral" className="status-neutral">Neutral</SelectItem>
-                  <SelectItem value="serious" className="status-serious">Serious</SelectItem>
-                  <SelectItem value="critical" className="status-critical">Extremely Serious</SelectItem>
+                <SelectContent>
+                  <SelectItem value="neutral" className="status-neutral">Normal</SelectItem>
+                  <SelectItem value="serious" className="status-serious">Important</SelectItem>
+                  <SelectItem value="critical" className="status-critical">Critical</SelectItem>
                 </SelectContent>
               </Select>
             </div>
             
-            <div className="flex gap-4 pt-4">
+            <div className="pt-6 space-y-3">
+              <Button 
+                type="submit" 
+                size="lg"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground h-14 text-base font-semibold"
+              >
+                <Plus className="w-5 h-5 mr-2" />
+                Create Reminder
+              </Button>
               <Button 
                 type="button"
                 variant="outline"
+                size="lg"
                 onClick={() => navigate('/')}
-                className="flex-1"
+                className="w-full h-12"
               >
                 Cancel
               </Button>
-              <Button 
-                type="submit" 
-                className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground glow-border"
-              >
-                <Plus className="w-4 h-4 mr-2" />
-                Schedule Event
-              </Button>
             </div>
           </form>
-        </Card>
+        </div>
       </div>
     </div>
   );

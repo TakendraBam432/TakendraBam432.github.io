@@ -17,9 +17,9 @@ const importanceColors = {
 };
 
 const importanceLabels = {
-  neutral: 'Neutral',
-  serious: 'Serious',
-  critical: 'Extremely Serious'
+  neutral: 'Normal',
+  serious: 'Important', 
+  critical: 'Critical'
 };
 
 export const EventCard = ({ event, onDelete }: EventCardProps) => {
@@ -27,41 +27,47 @@ export const EventCard = ({ event, onDelete }: EventCardProps) => {
   const isUpcoming = eventDate > new Date();
 
   return (
-    <Card className={`glass-card p-4 space-y-3 ${isUpcoming ? 'glow-border' : ''}`}>
+    <Card className={`p-4 space-y-3 ${isUpcoming ? 'border-primary/50' : ''}`}>
       <div className="flex items-start justify-between">
-        <div className="space-y-2 flex-1">
-          <h3 className="font-semibold text-lg text-foreground">{event.name}</h3>
+        <div className="space-y-2 flex-1 min-w-0">
+          <h3 className="font-medium text-base text-foreground truncate">{event.name}</h3>
           
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Calendar className="w-4 h-4" />
-            <span>{format(eventDate, 'MMM dd, yyyy')}</span>
-            <Clock className="w-4 h-4 ml-2" />
-            <span>{format(eventDate, 'HH:mm')}</span>
+          <div className="flex items-center gap-3 text-xs text-muted-foreground">
+            <div className="flex items-center gap-1">
+              <Calendar className="w-3 h-3" />
+              <span>{format(eventDate, 'MMM dd')}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <Clock className="w-3 h-3" />
+              <span>{format(eventDate, 'HH:mm')}</span>
+            </div>
           </div>
           
-          <Badge 
-            variant="outline" 
-            className={`${importanceColors[event.importance]} border-current`}
-          >
-            {importanceLabels[event.importance]}
-          </Badge>
+          <div className="flex items-center justify-between">
+            <Badge 
+              variant="outline" 
+              className={`${importanceColors[event.importance]} border-current text-xs`}
+            >
+              {importanceLabels[event.importance]}
+            </Badge>
+            
+            {isUpcoming && (
+              <span className="text-xs text-neon-blue font-medium">
+                📡 Active
+              </span>
+            )}
+          </div>
         </div>
         
         <Button
           variant="ghost"
           size="sm"
           onClick={() => onDelete(event.id)}
-          className="text-destructive hover:text-destructive hover:bg-destructive/10"
+          className="text-destructive hover:text-destructive hover:bg-destructive/10 ml-2 p-2"
         >
           <Trash2 className="w-4 h-4" />
         </Button>
       </div>
-      
-      {isUpcoming && (
-        <div className="text-xs text-neon-blue font-medium">
-          📡 Notification scheduled
-        </div>
-      )}
     </Card>
   );
 };

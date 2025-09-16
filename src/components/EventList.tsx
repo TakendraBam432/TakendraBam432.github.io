@@ -19,25 +19,25 @@ export const EventList = ({ events, onDeleteEvent }: EventListProps) => {
   if (events.length === 0) {
     return (
       <div className="text-center py-12 space-y-4">
-        <Calendar className="w-16 h-16 text-muted-foreground mx-auto opacity-50" />
+        <Calendar className="w-12 h-12 text-muted-foreground mx-auto opacity-50" />
         <div>
-          <h3 className="text-lg font-semibold text-foreground">No Events Scheduled</h3>
-          <p className="text-muted-foreground">Create your first event to get started</p>
+          <h3 className="text-base font-medium text-foreground">No reminders yet</h3>
+          <p className="text-sm text-muted-foreground">Tap the button above to create one</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {upcomingEvents.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <AlertTriangle className="w-5 h-5 text-neon-blue" />
-            <h3 className="text-lg font-semibold text-foreground">Upcoming Events</h3>
-            <span className="text-sm text-muted-foreground">({upcomingEvents.length})</span>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 px-1">
+            <AlertTriangle className="w-4 h-4 text-neon-blue" />
+            <h3 className="text-sm font-medium text-foreground">Upcoming</h3>
+            <span className="text-xs text-muted-foreground">({upcomingEvents.length})</span>
           </div>
-          <div className="grid gap-4">
+          <div className="space-y-3">
             {upcomingEvents.map((event) => (
               <EventCard 
                 key={event.id} 
@@ -50,13 +50,13 @@ export const EventList = ({ events, onDeleteEvent }: EventListProps) => {
       )}
       
       {pastEvents.length > 0 && (
-        <div className="space-y-4">
-          <div className="flex items-center gap-2">
-            <Calendar className="w-5 h-5 text-muted-foreground" />
-            <h3 className="text-lg font-semibold text-muted-foreground">Past Events</h3>
-            <span className="text-sm text-muted-foreground">({pastEvents.length})</span>
+        <div className="space-y-3">
+          <div className="flex items-center gap-2 px-1">
+            <Calendar className="w-4 h-4 text-muted-foreground" />
+            <h3 className="text-sm font-medium text-muted-foreground">Past</h3>
+            <span className="text-xs text-muted-foreground">({pastEvents.length})</span>
           </div>
-          <div className="grid gap-4">
+          <div className="space-y-3">
             {pastEvents.map((event) => (
               <EventCard 
                 key={event.id} 

@@ -13,9 +13,9 @@ const importanceColors = {
 };
 
 const importanceLabels = {
-  neutral: 'Neutral',
-  serious: 'Serious',
-  critical: 'Extremely Serious'
+  neutral: 'Normal',
+  serious: 'Important',
+  critical: 'Critical'
 };
 
 export const EventAlert = () => {
@@ -56,32 +56,30 @@ export const EventAlert = () => {
 
   return (
     <Dialog open={isOpen} onOpenChange={() => {}}>
-      <DialogContent 
-        className="max-w-md glass-card border-primary/50 animate-pulse-glow"
-      >
+      <DialogContent className="max-w-xs mx-auto top-1/2 translate-y-[-50%] border-primary/50 animate-pulse-glow">
         <div className="space-y-6 p-2">
           <div className="flex items-center justify-center">
             <div className="relative">
-              <AlertCircle className="w-16 h-16 text-primary animate-pulse" />
-              <Volume2 className="w-6 h-6 text-accent absolute -top-1 -right-1 animate-bounce" />
+              <AlertCircle className="w-12 h-12 text-primary animate-pulse" />
+              <Volume2 className="w-5 h-5 text-accent absolute -top-1 -right-1 animate-bounce" />
             </div>
           </div>
           
           <div className="text-center space-y-3">
-            <h2 className="text-2xl font-bold text-foreground">🚨 EVENT ALERT</h2>
+            <h2 className="text-xl font-bold text-foreground">🚨 REMINDER</h2>
             <div className="space-y-1">
-              <p className="text-sm text-muted-foreground">Alert for {alertEvent.userName}</p>
-              <h3 className="text-xl font-semibold text-primary">{alertEvent.name}</h3>
+              <p className="text-xs text-muted-foreground">{alertEvent.userName}</p>
+              <h3 className="text-lg font-semibold text-primary">{alertEvent.name}</h3>
             </div>
             
             <div className="space-y-2">
-              <p className="text-sm text-muted-foreground">
-                {format(new Date(alertEvent.datetime), 'MMM dd, yyyy • HH:mm')}
+              <p className="text-xs text-muted-foreground">
+                {format(new Date(alertEvent.datetime), 'MMM dd • HH:mm')}
               </p>
               
               <Badge 
                 variant="outline" 
-                className={`${importanceColors[alertEvent.importance]} border-current text-lg px-3 py-1`}
+                className={`${importanceColors[alertEvent.importance]} border-current px-3 py-1`}
               >
                 {importanceLabels[alertEvent.importance]}
               </Badge>
@@ -90,11 +88,11 @@ export const EventAlert = () => {
           
           <Button 
             onClick={handleStop}
-            className="w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground text-lg py-3"
+            className="w-full bg-destructive hover:bg-destructive/90 text-destructive-foreground py-3"
             size="lg"
           >
-            <X className="w-5 h-5 mr-2" />
-            STOP ALERT
+            <X className="w-4 h-4 mr-2" />
+            STOP
           </Button>
         </div>
       </DialogContent>
